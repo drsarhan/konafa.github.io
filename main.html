@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Main Page</h2>
+<form method="post">
+    <button type="submit" name="get_balance">Get Balance</button>
+</form>
+<div>
+    <h3>Balance</h3>
+    <pre>{{ balance }}</pre>
+</div>
+<form method="post">
+    <h3>Buy</h3>
+    <label for="buy_symbol">Symbol:</label>
+    <input type="text" id="buy_symbol" name="buy_symbol" placeholder="Enter symbol e.g. BTCUSDT" required>
+    <br>
+    <label for="buy_quantity">Quantity (USDT):</label>
+    <input type="text" id="buy_quantity" name="buy_quantity" placeholder="Enter quantity of USDT" required>
+    <br>
+    <button type="submit" name="buy">Buy</button>
+</form>
+<form method="post">
+    <h3>Sell</h3>
+    <label for="sell_symbol">Symbol:</label>
+    <select id="sell_symbol" name="sell_symbol" required>
+        {% for symbol in symbols %}
+            <option value="{{ symbol }}">{{ symbol }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="sell_quantity">Quantity (USDT):</label>
+    <input type="text" id="sell_quantity" name="sell_quantity" placeholder="Enter quantity of USDT" required>
+    <br>
+    <button type="submit" name="sell">Sell</button>
+</form>
+{% endblock %}
